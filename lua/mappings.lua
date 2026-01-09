@@ -8,7 +8,7 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
 map("n", "<C-t>", function()
-  require("minty.shades").open({ border = false })
+  require("minty.shades").open { border = false }
 end, {})
 
 vim.keymap.set("n", "<C-p>", ":FloatermToggle<CR>", { silent = true })
@@ -19,7 +19,7 @@ vim.keymap.set("n", "<C-l>", function()
 end, { desc = "tampilkan triforce statsnya" })
 
 vim.keymap.set({ "n", "v" }, "<RightMouse>", function()
-  require('menu.utils').delete_old_menus()
+  require("menu.utils").delete_old_menus()
 
   vim.cmd.exec '"normal! \\<RightMouse>"'
 
@@ -30,8 +30,13 @@ vim.keymap.set({ "n", "v" }, "<RightMouse>", function()
   require("menu").open(options, { mouse = true })
 end, {})
 
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+map({ "n", "i", "v" }, "<C-s>", "<cmd> w! <cr>")
 
 -- trouble mappings
-vim.keymap.set("n", "<leader>td", "<cmd>Trouble diagnostics  filter.buf = 0 win.type = split win.position=right<CR>", {desc = "Diagnostics (Trouble)"})
-vim.keymap.set("n", "<leader>tl", "<cmd>Trouble loclist toggle<CR>", {desc = "Location list (Trouble)"})
+vim.keymap.set(
+  "n",
+  "<leader>td",
+  "<cmd>Trouble diagnostics  filter.buf = 0 win.type = split win.position=right<CR>",
+  { desc = "Diagnostics (Trouble)" }
+)
+vim.keymap.set("n", "<leader>tl", "<cmd>Trouble loclist toggle<CR>", { desc = "Location list (Trouble)" })

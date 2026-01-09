@@ -9,11 +9,21 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   virtual_text = false,
 })
 
-vim.filetype.add({
+vim.filetype.add {
   extension = {
     xvr = "xvr",
-  }
-})
+  },
+}
+
+require "configs.luasnip"
+
+vim.filetype.add {
+  pattern = {
+    [".*%.blade%.php"] = "blade",
+  },
+}
+
+vim.opt.shell = "/usr/bin/fish"
 
 M.base46 = {
   theme = "everblush",
@@ -24,34 +34,33 @@ M.base46 = {
   },
 }
 
-
 M.nvdash = {
   load_on_startup = true,
   header = {
-    "           ▄ ▄                   ",
-    "       ▄   ▄▄▄     ▄ ▄▄▄ ▄ ▄     ",
-    "       █ ▄ █▄█ ▄▄▄ █ █▄█ █ █     ",
-    "    ▄▄ █▄█▄▄▄█ █▄█▄█▄▄█▄▄█ █     ",
-    "  ▄ █▄▄█ ▄ ▄▄ ▄█ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄  ",
-    "  █▄▄▄▄ ▄▄▄ █ ▄ ▄▄▄ ▄ ▄▄▄ ▄ ▄ █ ▄",
-    "▄ █ █▄█ █▄█ █ █ █▄█ █ █▄█ ▄▄▄ █ █",
-    "█▄█ ▄ █▄▄█▄▄█ █ ▄▄█ █ ▄ █ █▄█▄█ █",
-    "    █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█ █▄█▄▄▄█    ",
+    "┌───────────────────────────────┐",
+    "│  󰱪 DO NOT TOUCH MY NEOVIM 󰱪   │",
+    "│                               │",
+    "│       THIS CONFIG TOOK        │",
+    "│    MORE TIME THAN MY LIFE     │",
+    "│                               │",
+    "│       CTRL+C = PROBLEM    󰯆   │",
+    "│     CTRL+V = SKILL ISSUE     │",
+    "└───────────────────────────────┘",
     "",
     "",
   },
 }
 M.ui = {
   tabufline = {
-    enabled = false,
+    enabled = true,
   },
   statusline = {
     theme = "minimal",
     separator_style = "round",
   },
   cmp = {
-    style = "atom"
-  }
+    style = "atom",
+  },
 }
 
 return M

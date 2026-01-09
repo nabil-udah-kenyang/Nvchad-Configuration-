@@ -1,19 +1,18 @@
 return {
   {
     "stevearc/conform.nvim",
-    event = 'BufWritePre', -- uncomment for format on save
+    event = "BufWritePre", -- uncomment for format on save
     opts = require "configs.conform",
   },
 
   -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       require "configs.lspconfig"
     end,
   },
-
- 
 
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -22,6 +21,11 @@ return {
     ---@type ibl.config
     opts = {},
     enabled = false,
+  },
+
+  {
+    "jwalton512/vim-blade",
+    ft = "blade",
   },
 
   {
@@ -52,17 +56,17 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       require "configs.chunk"
-    end
+    end,
   },
 
-  { "nvzone/volt",     lazy = true },
-  { "nvzone/menu",     lazy = true },
+  { "nvzone/volt", lazy = true },
+  { "nvzone/menu", lazy = true },
 
   {
     "nvzone/timerly",
-    dependencies = 'nvzone/volt',
+    dependencies = "nvzone/volt",
     cmd = "TimerlyToggle",
-    opts = {} -- optional
+    opts = {}, -- optional
   },
 
   {
@@ -72,14 +76,14 @@ return {
     cmd = "FloatermToggle",
   },
 
-  { 'Civitasv/cmake-tools.nvim', opts = {} },
+  { "Civitasv/cmake-tools.nvim", opts = {} },
 
   {
     "slowy07/mywpm.nvim",
     event = "VeryLazy",
     config = function()
       require "configs.mywpm"
-    end
+    end,
   },
 
   -- test new blink
@@ -89,20 +93,36 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
-        "vim", "lua", "vimdoc",
-        "html", "css","php","python","javascript","tsx","typescript",
-        "cpp"
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+        "php",
+        "blade",
+        "python",
+        "javascript",
+        "tsx",
+        "typescript",
+        "cpp",
       },
       highlight = {
         enable = true,
-      }
+        disable = { "php", "blade" },
+      },
+      indent = { enable = false },
     },
 
     config = function(_, opts)
-      local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+      -- Setup treesitter dulu
+      require("nvim-treesitter.configs").setup(opts)
+
+      -- Daftarkan parser custom (API BARU)
+      local parsers = require "nvim-treesitter.parsers"
+      local parser_config = parsers.get_parser_configs and parsers.get_parser_configs() or parsers
+
       parser_config.xvrlang = {
         install_info = {
-          -- url = "https://github.com/WargaSlowy/xvrlang-treesitter",
           url = "~/Documents/project/xvrlang-treesitter",
           files = { "src/parser.c" },
           branch = "main",
@@ -110,15 +130,15 @@ return {
           requires_generate_from_grammar = false,
         },
         filetype = "xvr",
-        vim.filetype.add({
-          extension = {
-            xvrlang = "xvr",
-          }
-        })
       }
 
-      require("nvim-treesitter.configs").setup(opts)
-    end
+      -- filetype
+      vim.filetype.add {
+        extension = {
+          xvr = "xvr",
+        },
+      }
+    end,
   },
 
   {
@@ -137,7 +157,7 @@ return {
     lazy = false,
     preview = {
       icon_provider = "internal",
-    }
+    },
   },
 
   -- todo nvim
@@ -147,7 +167,7 @@ return {
     lazy = false,
     config = function()
       require "configs.todo"
-    end
+    end,
   },
 
   -- trouble nvim
@@ -156,6 +176,5 @@ return {
     opts = {},
     lazy = false,
     cmd = "Trouble",
-  }
-
+  },
 }
