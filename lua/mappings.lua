@@ -40,3 +40,5 @@ vim.keymap.set(
   { desc = "Diagnostics (Trouble)" }
 )
 vim.keymap.set("n", "<leader>tl", "<cmd>Trouble loclist toggle<CR>", { desc = "Location list (Trouble)" })
+
+vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Select all text" })
