@@ -78,13 +78,14 @@ return {
 
   { "Civitasv/cmake-tools.nvim", opts = {} },
 
-  {
-    "slowy07/mywpm.nvim",
-    event = "VeryLazy",
-    config = function()
-      require "configs.mywpm"
-    end,
-  },
+  -- MYWPM PLUGIN
+  -- {
+  --   "slowy07/mywpm.nvim",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require "configs.mywpm"
+  --   end,
+  -- },
 
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
