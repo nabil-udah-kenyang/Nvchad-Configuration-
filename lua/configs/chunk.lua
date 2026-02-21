@@ -1,6 +1,5 @@
-require("hlchunk").setup({
+require("hlchunk").setup {
   chunk = {
-        enable = true,
-   
-  }
-})
+    enable = true,
+  },
+}

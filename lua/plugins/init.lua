@@ -109,37 +109,37 @@ return {
       },
       highlight = {
         enable = true,
-        disable = { "php", "blade" },
+        -- disable = { "php", "blade" },
       },
       indent = { enable = false },
     },
 
-    config = function(_, opts)
-      -- Setup treesitter dulu
-      require("nvim-treesitter.configs").setup(opts)
-
-      -- Daftarkan parser custom (API BARU)
-      local parsers = require "nvim-treesitter.parsers"
-      local parser_config = parsers.get_parser_configs and parsers.get_parser_configs() or parsers
-
-      parser_config.xvrlang = {
-        install_info = {
-          url = "~/Documents/project/xvrlang-treesitter",
-          files = { "src/parser.c" },
-          branch = "main",
-          generate_requires_npm = false,
-          requires_generate_from_grammar = false,
-        },
-        filetype = "xvr",
-      }
-
-      -- filetype
-      vim.filetype.add {
-        extension = {
-          xvr = "xvr",
-        },
-      }
-    end,
+    -- config = function(_, opts)
+    --   -- Setup treesitter dulu
+    --   -- require("nvim-treesitter.configs").setup(opts)
+    --
+    --   -- Daftarkan parser custom (API BARU)
+    --   local parsers = require "nvim-treesitter.parsers"
+    --   local parser_config = parsers.get_parser_configs and parsers.get_parser_configs() or parsers
+    --
+    --   parser_config.xvrlang = {
+    --     install_info = {
+    --       url = "~/Documents/project/xvrlang-treesitter",
+    --       files = { "src/parser.c" },
+    --       branch = "main",
+    --       generate_requires_npm = false,
+    --       requires_generate_from_grammar = false,
+    --     },
+    --     filetype = "xvr",
+    --   }
+    --
+    --   -- filetype
+    --   vim.filetype.add {
+    --     extension = {
+    --       xvr = "xvr",
+    --     },
+    --   }
+    -- end,
   },
 
   {

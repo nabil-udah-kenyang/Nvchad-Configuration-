@@ -1,7 +1,15 @@
 <?php
 
-$nama = $_GET['nama'];
+/* $nama = $_GET['nama']; */
 
 $makanan = 'indomi';
 
-echo $makanan.'kesukaan'.$nama;
+/* echo $makanan.'kesukaan'.$nama; */
+
+function panggilnama()
+{
+    echo 'naufal nabil';
+
+}
+
+panggilnama();
