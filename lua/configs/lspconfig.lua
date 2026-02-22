@@ -11,7 +11,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 ------- BAGIAN INLAY HINTS UNTUK MASING MASING BAHASA --------
--- c++
+-- c++ (SUCCESS)
+
 vim.lsp.config("clangd", {
   cmd = {
     "clangd",
@@ -44,7 +45,8 @@ vim.lsp.config("intelephense", {
   },
 })
 
--- ts_ls(javascript family)
+-- ts_ls(javascript family) (SUCCESS)
+
 vim.lsp.config("ts_ls", {
   settings = {
     typescript = {
@@ -72,7 +74,7 @@ vim.lsp.config("ts_ls", {
   },
 })
 
--- rust
+-- rust  (SUCCESS)
 
 vim.lsp.config("rust_analyzer", {
   settings = {
@@ -86,7 +88,7 @@ vim.lsp.config("rust_analyzer", {
   },
 })
 
--- Golang
+-- Golang  (SUCCESS)
 
 vim.lsp.config("gopls", {
   settings = {
