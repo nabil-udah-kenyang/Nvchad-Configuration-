@@ -4,7 +4,7 @@
 
 $makanan = 'indomi';
 
-/* echo $makanan.'kesukaan'.$nama; */
+echo $makanan.'kesukaan'.$nama;
 
 function panggilnama()
 {
@@ -12,4 +12,11 @@ function panggilnama()
 
 }
 
+function marah_ke_orang($nama, $perkataan)
+{
+    echo 'dasar '.$nama."$perkataan";
+}
+
 panggilnama();
+
+marah_ke_orang('nabil', 'asuu');
