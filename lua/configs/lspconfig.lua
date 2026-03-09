@@ -1,6 +1,18 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "cssls", "clangd", "intelephense", "pyright", "gopls", "ts_ls", "tsgo", "rust_analyzer" }
+local servers = {
+  "html",
+  "cssls",
+  "clangd",
+  "intelephense",
+  "pyright",
+  "gopls",
+  "ts_ls",
+  "tsgo",
+  "rust_analyzer",
+  "jdtls",
+  "stimulus_ls",
+}
 vim.lsp.enable(servers)
 
 -- Enable inlay hints otomatis saat LSP attach
