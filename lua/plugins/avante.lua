@@ -14,15 +14,15 @@ return {
     },
 
     opts = {
-      provider = "gemini",
-      auto_suggestions_provider = "gemini",
+      provider = "openrouter",
+      auto_suggestions_provider = "openrouter",
 
       providers = {
-        gemini = {
-          endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
-          model = "gemini-1.5-flash",
-          timeout = 30000,
-          api_key_name = "GEMINI_API_KEY",
+        openrouter = {
+          __inherited_from = "openai",
+          endpoint = "https://openrouter.ai/api/v1",
+          model = "google/gemini-flash-1.5",
+          api_key_name = "OPENROUTER_API_KEY",
         },
       },
     },

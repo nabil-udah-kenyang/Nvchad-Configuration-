@@ -2,8 +2,6 @@ require "nvchad.options"
 
 local M = {}
 
-
-
 M.stbufnr = function()
   return vim.api.nvim_win_get_buf(vim.g.statusline_winid or 0)
 end
@@ -16,29 +14,37 @@ o.background = "dark"
 vim.opt.relativenumber = false
 vim.opt.list = true
 vim.opt.listchars = {
-  eol = '↴',
+  eol = "↴",
 }
 
-local highlights = {
-  Normal          = { fg = "#f4f4f4", bg = "#141b1e" },
-  Separator       = { fg = "#232a2d", bg = "#141b1e" },
-  Separator2      = { fg = "#3a435a", bg = "#232a2d" },
-  ModeText        = { fg = "#956dca", bg = "#232a2d" },
-  PathText        = { fg = "#956dca", bg = "#232a2d" },
-  FileText        = { fg = "#f4f3ee", bg = "#232a2d" },
-  FileType        = { fg = "#e37e4f", bg = "#232a2d" },
-  BranchName      = { fg = "#69bfce", bg = "#232a2d" },
-  LineText        = { fg = "#e34f4f", bg = "#232a2d" },
-  ColumnText      = { fg = "#5679e3", bg = "#232a2d" },
-  PercentageText  = { fg = "#5599e2", bg = "#232a2d" },
-  TotalLineText   = { fg = "#956dca", bg = "#232a2d" },
-  DiagnosticsText = { fg = "#67b0e8", bg = "#232a2d" },
-  LSPColor        = { fg = "#8ccf7e", bg = "#232a2d" },
+vim.o.foldcolumn = "1"
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
 
-  DiagError       = { fg = "#e06c75", bg = "#232a2d" },
-  DiagWarn        = { fg = "#e5c07b", bg = "#232a2d" },
-  DiagInfo        = { fg = "#61afef", bg = "#232a2d" },
-  DiagHint        = { fg = "#98c379", bg = "#232a2d" },
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+
+local highlights = {
+  Normal = { fg = "#f4f4f4", bg = "#141b1e" },
+  Separator = { fg = "#232a2d", bg = "#141b1e" },
+  Separator2 = { fg = "#3a435a", bg = "#232a2d" },
+  ModeText = { fg = "#956dca", bg = "#232a2d" },
+  PathText = { fg = "#956dca", bg = "#232a2d" },
+  FileText = { fg = "#f4f3ee", bg = "#232a2d" },
+  FileType = { fg = "#e37e4f", bg = "#232a2d" },
+  BranchName = { fg = "#69bfce", bg = "#232a2d" },
+  LineText = { fg = "#e34f4f", bg = "#232a2d" },
+  ColumnText = { fg = "#5679e3", bg = "#232a2d" },
+  PercentageText = { fg = "#5599e2", bg = "#232a2d" },
+  TotalLineText = { fg = "#956dca", bg = "#232a2d" },
+  DiagnosticsText = { fg = "#67b0e8", bg = "#232a2d" },
+  LSPColor = { fg = "#8ccf7e", bg = "#232a2d" },
+
+  DiagError = { fg = "#e06c75", bg = "#232a2d" },
+  DiagWarn = { fg = "#e5c07b", bg = "#232a2d" },
+  DiagInfo = { fg = "#61afef", bg = "#232a2d" },
+  DiagHint = { fg = "#98c379", bg = "#232a2d" },
 }
 
 for group, opts in pairs(highlights) do
@@ -48,14 +54,14 @@ end
 _G.RecolorMode = function()
   local mode = vim.fn.mode()
   local color_map = {
-    n     = { fg = "#5599e2", bg = "#232a2d" },
-    i     = { fg = "#e34f4f", bg = "#232a2d" },
-    R     = { fg = "#69bfce", bg = "#141b1e" },
-    v     = { fg = "#e37e4f", bg = "#232a2d" },
-    V     = { fg = "#e37e4f", bg = "#141b1e" },
+    n = { fg = "#5599e2", bg = "#232a2d" },
+    i = { fg = "#e34f4f", bg = "#232a2d" },
+    R = { fg = "#69bfce", bg = "#141b1e" },
+    v = { fg = "#e37e4f", bg = "#232a2d" },
+    V = { fg = "#e37e4f", bg = "#141b1e" },
     ["V"] = { fg = "#e37e4f", bg = "#141b1e" },
-    c     = { fg = "#5679e3", bg = "#232a2d" },
-    t     = { fg = "#5679e3", bg = "#141b1e" },
+    c = { fg = "#5679e3", bg = "#232a2d" },
+    t = { fg = "#5679e3", bg = "#141b1e" },
   }
 
   local hl = color_map[mode]
@@ -163,8 +169,6 @@ _G.lsp = function()
 end
 
 _G.HandleColumnGap = function()
-  local col = vim.fn.col(".")
+  local col = vim.fn.col "."
   return col > 9 and " " or " "
 end
-
-
