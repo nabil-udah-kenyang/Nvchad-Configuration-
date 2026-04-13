@@ -11,6 +11,7 @@ local servers = {
   "tsgo",
   "rust_analyzer",
   "jdtls",
+  -- "dartls",
 }
 vim.lsp.enable(servers)
 

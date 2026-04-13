@@ -28,11 +28,6 @@ vim.opt.wrap = false
 
 M.base46 = {
   theme = "everblush",
-
-  hl_override = {
-    Comment = { italic = true },
-    ["@comment"] = { italic = true },
-  },
 }
 
 M.nvdash = {
@@ -68,6 +63,12 @@ M.ui = {
   cmp = {
     style = "atom",
   },
+  -- hl_override = require("configs.highlights").override,
 }
+
+vim.schedule(function()
+  vim.api.nvim_set_hl(0, "Comment", { fg = "#6A9955", italic = true })
+  vim.api.nvim_set_hl(0, "@comment", { fg = "#6A9955", italic = true })
+end)
 
 return M
