@@ -16,5 +16,7 @@ int main() {
  sapa_orang("nabil", 19); 
 
  panggil_nama("rizal");
+
+
   
 }

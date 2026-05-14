@@ -63,7 +63,6 @@ M.ui = {
   cmp = {
     style = "atom",
   },
-  -- hl_override = require("configs.highlights").override,
 }
 
 vim.schedule(function()
@@ -71,4 +70,18 @@ vim.schedule(function()
   vim.api.nvim_set_hl(0, "@comment", { fg = "#6A9955", italic = true })
 end)
 
+vim.schedule(function()
+  -- file aktif yang sedang dibuka
+  vim.api.nvim_set_hl(0, "NvimTreeOpenedHL", {
+    fg = "#ffffff",
+    bg = "#5e81ac",
+    bold = false,
+  })
+
+  -- baris cursor di nvimtree
+  vim.api.nvim_set_hl(0, "NvimTreeCursorLine", {
+    bg = "#026f92",
+    bold = true,
+  })
+end)
 return M
