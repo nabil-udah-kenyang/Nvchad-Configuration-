@@ -70,18 +70,38 @@ vim.schedule(function()
   vim.api.nvim_set_hl(0, "@comment", { fg = "#6A9955", italic = true })
 end)
 
-vim.schedule(function()
-  -- file aktif yang sedang dibuka
-  vim.api.nvim_set_hl(0, "NvimTreeOpenedHL", {
-    fg = "#ffffff",
-    bg = "#5e81ac",
-    bold = false,
-  })
-
-  -- baris cursor di nvimtree
+local function set_nvimtree_highlights()
+  -- baris yang sedang disorot cursor di nvim-tree
   vim.api.nvim_set_hl(0, "NvimTreeCursorLine", {
-    bg = "#026f92",
+    bg = "#076c75",
     bold = true,
   })
-end)
+
+  -- nomor line cursor kalau muncul
+  vim.api.nvim_set_hl(0, "NvimTreeCursorLineNr", {
+    fg = "#ffffff",
+    bg = "#076c75",
+    bold = true,
+  })
+
+  -- file yang sedang terbuka / aktif
+  vim.api.nvim_set_hl(0, "NvimTreeOpenedHL", {
+    fg = "#ffffff",
+    bg = "#076c75",
+    bold = true,
+  })
+
+  -- jaga-jaga untuk versi nvim-tree lain
+  vim.api.nvim_set_hl(0, "NvimTreeOpenedFile", {
+    fg = "#ffffff",
+    bg = "#076c75",
+    bold = true,
+  })
+end
+
+vim.api.nvim_create_autocmd({ "VimEnter", "ColorScheme", "BufEnter" }, {
+  callback = function()
+    vim.schedule(set_nvimtree_highlights)
+  end,
+})
 return M
