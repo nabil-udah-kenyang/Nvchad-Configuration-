@@ -5,6 +5,22 @@ return {
     opts = require "configs.conform",
   },
 
+  -- nvim tree
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = function(_, opts)
+      opts.filters = opts.filters or {}
+
+      -- Biar file/folder yang masuk .gitignore tetap tampil
+      opts.filters.git_ignored = false
+
+      -- Biar dotfiles seperti .env, .gitignore, .editorconfig tetap tampil
+      opts.filters.dotfiles = false
+
+      return opts
+    end,
+  },
+
   -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
