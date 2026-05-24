@@ -30,7 +30,22 @@ vim.keymap.set({ "n", "v" }, "<RightMouse>", function()
   require("menu").open(options, { mouse = true })
 end, {})
 
-map({ "n", "i", "v" }, "<C-s>", "<cmd> w! <cr>")
+map({ "n", "i", "v" }, "<C-s>", function()
+  if vim.fn.mode() == "i" then
+    vim.cmd "stopinsert"
+  end
+
+  if vim.bo.filetype == "dart" then
+    pcall(function()
+      vim.lsp.buf.format { async = false }
+    end)
+
+    vim.cmd "silent! w"
+    pcall(vim.cmd, "FlutterReload")
+  else
+    vim.cmd "silent! w"
+  end
+end, { desc = "Save / Dart format reload" })
 
 -- trouble mappings
 vim.keymap.set(
