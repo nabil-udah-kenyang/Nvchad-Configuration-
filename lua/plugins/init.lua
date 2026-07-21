@@ -61,10 +61,11 @@ return {
 
   { "nvchad/showkeys", cmd = "ShowkeysToggle", opts = { position = "top-center" } },
   {
-    "nvzone/typr",
+    "nvzone/floaterm",
     dependencies = "nvzone/volt",
-    opts = {},
-    cmd = { "Typr", "TyprStats" },
+    opts = function()
+      return require "configs.floaterm"
+    end,
   },
 
   {
