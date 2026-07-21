@@ -3,6 +3,7 @@ require("nvchad.configs.lspconfig").defaults()
 local servers = {
   "html",
   "cssls",
+  "tailwindcss",
   "clangd",
   "intelephense",
   "pyright",
@@ -115,6 +116,25 @@ vim.lsp.config("gopls", {
         rangeVariableTypes = true,
       },
     },
+  },
+})
+
+-- tailwindcss
+
+vim.lsp.config("tailwindcss", {
+  filetypes = {
+    "html",
+    "css",
+    "scss",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "svelte",
+    "astro",
+    "php",
+    "blade",
   },
 })
 
