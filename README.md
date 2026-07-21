@@ -217,6 +217,125 @@ Jika LSP tidak jalan, cek:
 
 Jika formatter tidak jalan, pastikan binary formatter sudah terinstall dan bisa dipanggil dari terminal.
 
+# Neovim Cheatsheet
+
+> Gunakan `/kata` di Neovim untuk mencari shortcut dengan cepat.  
+> Notasi: `Ctrl` = tombol Control, `Space` = tombol spasi, `Shift` = tombol Shift.
+
+---
+
+## Mode Normal — Navigasi
+
+| Shortcut | Fungsi |
+| --- | --- |
+| `w` | Ke awal kata berikutnya |
+| `b` | Ke awal kata sebelumnya |
+| `e` | Ke akhir kata berikutnya |
+| `0` | Ke awal baris |
+| `^` | Ke karakter pertama yang bukan spasi di baris |
+| `$` | Ke akhir baris |
+| `gg` | Ke baris paling atas |
+| `G` | Ke baris paling bawah |
+| `{angka}gg` | Ke baris tertentu, contoh: `20gg` |
+| `Ctrl-d` | Scroll setengah layar ke bawah |
+| `Ctrl-u` | Scroll setengah layar ke atas |
+| `zt` | Letakkan baris aktif di atas layar |
+| `zz` | Letakkan baris aktif di tengah layar |
+| `zb` | Letakkan baris aktif di bawah layar |
+
+## Mode Normal — Masuk Mode Lain
+
+| Shortcut | Fungsi |
+| --- | --- |
+| `i` | Insert sebelum kursor |
+| `I` | Insert di awal teks pada baris |
+| `a` | Insert setelah kursor |
+| `A` | Insert di akhir baris |
+| `o` | Buat baris baru di bawah lalu insert |
+| `O` | Buat baris baru di atas lalu insert |
+| `v` | Masuk Visual mode |
+| `:` | Masuk Command-line mode |
+
+## Mode Normal — Edit, Salin, & Hapus
+
+| Shortcut | Fungsi |
+| --- | --- |
+| `x` | Hapus satu karakter di bawah kursor |
+| `p` | Paste setelah kursor |
+| `u` | Undo |
+| `Ctrl-r` | Redo |
+| `yy` | Salin satu baris |
+| `{angka}yy` | Salin sejumlah baris, contoh: `3yy` |
+| `dd` | Hapus satu baris |
+| `{angka}dd` | Hapus sejumlah baris, contoh: `3dd` |
+| `cc` | Hapus isi baris lalu masuk Insert mode |
+| `{angka}cc` | Hapus sejumlah baris lalu masuk Insert mode |
+| `S` | Hapus isi baris lalu masuk Insert mode |
+| `ciw` | Ubah satu kata: hapus lalu masuk Insert mode |
+| `diw` | Hapus satu kata |
+| `yiw` | Salin satu kata |
+| `.` | Ulangi perintah editing terakhir |
+
+---
+
+## Visual Mode — Dasar
+
+| Shortcut | Fungsi |
+| --- | --- |
+| `Esc` | Kembali ke Normal mode |
+| `y` | Salin pilihan |
+| `d` | Hapus / cut pilihan |
+| `v` | Mulai seleksi per karakter |
+| `V` | Seleksi satu baris penuh |
+| `v` → `b` → `e` | Pilih satu kata dari akhir ke awal |
+
+## Visual Mode — Pilih Objek
+
+> Awali dengan `v`, lalu ketik kombinasi berikut.
+
+| Shortcut | Fungsi |
+| --- | --- |
+| `vit` | Pilih isi di dalam tag HTML / Blade |
+| `vat` | Pilih tag beserta isinya |
+| `vi(` atau `vib` | Pilih isi dalam `()` |
+| `va(` atau `vab` | Pilih `()` beserta isinya |
+| `va{` atau `vaB` | Pilih `{}` beserta isinya |
+
+---
+
+## Window & Buffer
+
+| Shortcut | Fungsi |
+| --- | --- |
+| `Ctrl-w` + `←/↓/↑/→` | Pindah ke window sesuai arah |
+| `Ctrl-w` lalu `v` | Split window vertikal |
+| `Space` + `x` | Tutup buffer *(keymap custom)* |
+
+## Keymap Custom / Plugin
+
+| Shortcut | Fungsi |
+| --- | --- |
+| `Ctrl-j` | Multi-cursor mode |
+| `Ctrl-p` | Buka floating terminal |
+| `Ctrl-h` | Pindah ke panel terminal sebelah kiri |
+| `Ctrl-l` | Pindah ke panel terminal sebelah kanan |
+
+---
+
+## Pola yang Perlu Diingat
+
+```text
+[angka] + perintah  → ulangi perintah beberapa kali
+c                    → change: hapus lalu langsung Insert mode
+d                    → delete: hapus tanpa masuk Insert mode
+y                    → yank: salin
+i                    → inside / di dalam objek
+a                    → around / objek beserta pembungkusnya
+```
+
+Contoh cepat: `ciw` = ubah kata, `diw` = hapus kata, `yiw` = salin kata.
+
+
 ## Lisensi
 
 Project ini mengikuti lisensi yang ada di file [LICENSE](./LICENSE). Silakan pakai, fork, dan modifikasi sesuai kebutuhan.
