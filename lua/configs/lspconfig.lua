@@ -9,12 +9,12 @@ local servers = {
   "pyright",
   "gopls",
   "ts_ls",
-  "tsgo",
+  -- "tsgo",
   "rust_analyzer",
   "jdtls",
+  "vue_ls",
   -- "dartls",
 }
-vim.lsp.enable(servers)
 
 -- Enable inlay hints otomatis saat LSP attach
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -58,9 +58,33 @@ vim.lsp.config("intelephense", {
   },
 })
 
+-- vue js
+vim.lsp.config("vue_ls", {
+  filetypes = { "vue" },
+})
+
 -- ts_ls(javascript family) (SUCCESS)
 
+local vue_language_server_path = vim.fn.stdpath "data"
+  .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+
 vim.lsp.config("ts_ls", {
+  init_options = {
+    plugins = {
+      {
+        name = "@vue/typescript-plugin",
+        location = vue_language_server_path,
+        languages = { "javascript", "typescript", "vue" },
+      },
+    },
+  },
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+  },
   settings = {
     typescript = {
       inlayHints = {
@@ -86,6 +110,8 @@ vim.lsp.config("ts_ls", {
     },
   },
 })
+
+vim.lsp.enable(servers)
 
 -- rust  (SUCCESS)
 
