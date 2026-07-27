@@ -27,6 +27,10 @@ map("n", "<C-t>", function()
   require("minty.shades").open { border = false }
 end, {})
 
+map("n", "<leader>ob", function()
+  require("utils.dart_wrap").wrap_with_obx()
+end, { desc = "Wrap Dart widget with Obx" })
+
 vim.keymap.set("n", "<C-p>", ":FloatermToggle<CR>", { silent = true })
 vim.keymap.set("n", "<leader>mt", ":Markview toggle<CR>", { silent = true }, { desc = "markdown preview" })
 
