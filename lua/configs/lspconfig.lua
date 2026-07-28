@@ -147,20 +147,16 @@ vim.lsp.config("gopls", {
 
 -- tailwindcss
 
+local util = require "lspconfig.util"
+
 vim.lsp.config("tailwindcss", {
   filetypes = {
     "html",
-    "css",
-    "scss",
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
     "vue",
-    "svelte",
-    "astro",
-    "php",
     "blade",
+    "php",
+    "javascriptreact",
+    "typescriptreact",
   },
 })
 
