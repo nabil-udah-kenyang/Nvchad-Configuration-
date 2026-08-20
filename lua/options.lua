@@ -11,7 +11,7 @@ end
 local o = vim.o
 o.cursorlineopt = "both" -- to enable cursorline!
 o.background = "dark"
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 vim.opt.list = true
 vim.opt.listchars = {
   eol = "↴",
@@ -172,3 +172,26 @@ _G.HandleColumnGap = function()
   local col = vim.fn.col "."
   return col > 9 and " " or " "
 end
+
+local function use_virtual_document_color(bufnr)
+  if not (vim.lsp and vim.lsp.document_color and vim.lsp.document_color.enable) then
+    return
+  end
+
+  local filter = bufnr and { bufnr = bufnr } or nil
+
+  pcall(vim.lsp.document_color.enable, false, filter)
+  pcall(vim.lsp.document_color.enable, true, filter, {
+    style = "virtual",
+  })
+end
+
+vim.schedule(function()
+  use_virtual_document_color(nil)
+end)
+
+vim.api.nvim_create_autocmd({ "LspAttach", "BufEnter" }, {
+  callback = function(args)
+    use_virtual_document_color(args.buf)
+  end,
+})

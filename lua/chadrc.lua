@@ -56,12 +56,24 @@ M.ui = {
   tabufline = {
     enabled = true,
   },
+
   statusline = {
     theme = "minimal",
     separator_style = "round",
   },
+
   cmp = {
     style = "atom",
+  },
+}
+
+M.colorify = {
+  enabled = false,
+  mode = "virtual",
+  virt_text = "󱓻 ",
+  highlight = {
+    hex = true,
+    lspvars = true,
   },
 }
 

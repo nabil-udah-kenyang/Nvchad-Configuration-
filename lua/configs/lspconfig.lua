@@ -15,11 +15,21 @@ local servers = {
   "vue_ls",
   -- "dartls",
 }
+-- vue js
+vim.lsp.config("vue_ls", {
+  filetypes = { "vue" },
+})
 
 -- Enable inlay hints otomatis saat LSP attach
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
-    vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+    local ft = vim.bo[args.buf].filetype
+
+    if ft == "dart" then
+      vim.lsp.inlay_hint.enable(false, { bufnr = args.buf })
+    else
+      vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+    end
   end,
 })
 
@@ -56,11 +66,6 @@ vim.lsp.config("intelephense", {
       },
     },
   },
-})
-
--- vue js
-vim.lsp.config("vue_ls", {
-  filetypes = { "vue" },
 })
 
 -- ts_ls(javascript family) (SUCCESS)

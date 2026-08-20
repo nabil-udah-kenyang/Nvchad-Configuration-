@@ -5,6 +5,10 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "neovim/nvim-lspconfig",
     },
-    opts = {},
+    opts = {
+      document_color = {
+        enabled = false,
+      },
+    },
   },
 }

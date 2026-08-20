@@ -23,6 +23,14 @@ local map = vim.keymap.set
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
+map("n", "<C-n>", function()
+  require("nvim-tree.api").tree.toggle()
+end, { desc = "NvimTree toggle" })
+
+map("n", "<leader>e", function()
+  require("nvim-tree.api").tree.focus()
+end, { desc = "NvimTree focus" })
+
 map("n", "<C-t>", function()
   require("minty.shades").open { border = false }
 end, {})
