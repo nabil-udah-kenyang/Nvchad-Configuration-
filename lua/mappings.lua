@@ -85,3 +85,8 @@ vim.keymap.set(
 vim.keymap.set("n", "<leader>tl", "<cmd>Trouble loclist toggle<CR>", { desc = "Location list (Trouble)" })
 
 vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Select all text" })
+
+-- ===============================
+-- Buka Flutter Mobile Simulator
+-- ===============================
+vim.keymap.set("n", "<C-CR>", "<cmd>SimulatorMobile<CR>", { desc = "Buka Flutter Mobile Simulator", silent = true })
