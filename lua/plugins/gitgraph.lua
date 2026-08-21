@@ -1,14 +1,37 @@
 return {
   "isakbm/gitgraph.nvim",
-  dependencies = { "sindrets/diffview.nvim" },
+  dependencies = {
+    {
+      "sindrets/diffview.nvim",
+      opts = {
+        keymaps = {
+          file_panel = {
+            { "n", "q", "<cmd>DiffviewClose<cr>", { desc = "Close Diffview" } },
+          },
+        },
+      },
+    },
+  },
   keys = {
     {
       "<leader>gl",
       function()
+        -- Delete any existing GitGraph buffer first to prevent E95 buffer name error
+        for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+          if vim.api.nvim_buf_is_valid(buf) then
+            local name = vim.api.nvim_buf_get_name(buf)
+            local ft = vim.bo[buf].filetype
+            if ft == "gitgraph" or name:match("GitGraph") then
+              pcall(vim.api.nvim_buf_delete, buf, { force = true })
+            end
+          end
+        end
+
         require("gitgraph").draw({}, { all = true, max_count = 5000 })
       end,
       desc = "Git Graph Tree View",
     },
+    { "<leader>gc", "<cmd>DiffviewClose<cr>", desc = "Close Diffview" },
   },
   config = function()
     local gitgraph = require("gitgraph")
@@ -39,7 +62,7 @@ return {
       vim.api.nvim_set_hl(0, "GitGraphAuthor", { fg = "#e5e5e5", bold = true }) -- Putih (White)
       vim.api.nvim_set_hl(0, "GitGraphBranchName", { fg = "#8ccf7e", bold = true }) -- Bright Green
       vim.api.nvim_set_hl(0, "GitGraphBranchTag", { fg = "#e5c76b", bold = true }) -- Yellow
-      vim.api.nvim_set_hl(0, "GitGraphBranchMsg", { fg = "#e5c76b", bold = true }) -- Bright Yellow (Kuning Terang!)
+      vim.api.nvim_set_hl(0, "GitGraphBranchMsg", { fg = "#e5c76b", bold = true }) -- Bright Yellow
 
       -- Branch tree lines colors
       vim.api.nvim_set_hl(0, "GitGraphBranch1", { fg = "#8ccf7e" })
@@ -54,6 +77,16 @@ return {
     vim.api.nvim_create_autocmd("ColorScheme", {
       pattern = "*",
       callback = set_hl,
+    })
+
+    -- Enable 'q' and '<Esc>' keymaps to close GitGraph buffer instantly
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "gitgraph",
+      callback = function(event)
+        local opts = { buffer = event.buf, silent = true }
+        vim.keymap.set("n", "q", "<cmd>bdelete!<cr>", opts)
+        vim.keymap.set("n", "<Esc>", "<cmd>bdelete!<cr>", opts)
+      end,
     })
   end,
 }
