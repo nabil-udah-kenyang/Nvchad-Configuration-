@@ -195,3 +195,25 @@ vim.api.nvim_create_autocmd({ "LspAttach", "BufEnter" }, {
     use_virtual_document_color(args.buf)
   end,
 })
+
+-- auto-refresh statusline git blame setelah cursor berhenti (sedikit lebih lama dari blame delay 300ms)
+local _blame_timer = nil
+vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI", "BufEnter" }, {
+  desc = "Refresh statusline git blame setelah gitsigns async update",
+  callback = function()
+    if _blame_timer then
+      _blame_timer:stop()
+      _blame_timer:close()
+      _blame_timer = nil
+    end
+    _blame_timer = vim.uv.new_timer()
+    _blame_timer:start(350, 0, vim.schedule_wrap(function()
+      if _blame_timer then
+        _blame_timer:stop()
+        _blame_timer:close()
+        _blame_timer = nil
+      end
+      vim.cmd "redrawstatus"
+    end))
+  end,
+})

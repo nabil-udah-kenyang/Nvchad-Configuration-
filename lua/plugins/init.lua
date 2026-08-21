@@ -1,4 +1,24 @@
 return {
+  -- override gitsigns untuk enable current_line_blame (dipakai statusline git_blame module)
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = function()
+      dofile(vim.g.base46_cache .. "git")
+      return {
+        signs = {
+          delete = { text = "󰍵" },
+          changedelete = { text = "󱕖" },
+        },
+        current_line_blame = true,
+        current_line_blame_opts = {
+          virt_text = false, -- kita tampilkan di statusline, bukan inline virtual text
+          delay = 300,
+          use_focus = true,
+        },
+      }
+    end,
+  },
+
   {
     "stevearc/conform.nvim",
     event = "BufWritePre", -- uncomment for format on save
