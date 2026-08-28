@@ -39,6 +39,14 @@ map("n", "<leader>ob", function()
   require("utils.dart_wrap").wrap_with_obx()
 end, { desc = "Wrap Dart widget with Obx" })
 
+-- Flutter
+map("n", "<leader>fr", "<cmd>FlutterRun<CR>", { desc = "Flutter run", silent = true })
+map("n", "<leader>fq", "<cmd>FlutterQuit<CR>", { desc = "Flutter quit", silent = true })
+map("n", "<leader>fhr", "<cmd>FlutterReload<CR>", { desc = "Flutter hot reload", silent = true })
+map("n", "<leader>fR", "<cmd>FlutterRestart<CR>", { desc = "Flutter hot restart", silent = true })
+map("n", "<leader>flc", "<cmd>FlutterLogClear<CR>", { desc = "Flutter log clear", silent = true })
+map("n", "<leader>flt", "<cmd>FlutterLogToggle<CR>", { desc = "Flutter log toggle", silent = true })
+
 vim.keymap.set("n", "<C-p>", ":FloatermToggle<CR>", { silent = true })
 vim.keymap.set("n", "<leader>mt", ":Markview toggle<CR>", { silent = true }, { desc = "markdown preview" })
 
