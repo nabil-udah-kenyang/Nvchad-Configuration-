@@ -31,6 +31,8 @@ map("n", "<leader>e", function()
   require("nvim-tree.api").tree.focus()
 end, { desc = "NvimTree focus" })
 
+map("n", "<leader>fp", "<cmd>AutoSession search<CR>", { desc = "Find project / sessions (Floating)" })
+
 map("n", "<C-t>", function()
   require("minty.shades").open { border = false }
 end, {})

@@ -12,6 +12,13 @@ return {
       auto_session_root_dir = vim.fn.stdpath "data" .. "/sessions/",
       auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
 
+      session_lens = {
+        load_on_setup = true,
+        previewer = false,
+        theme_conf = { border = true },
+        buftypes_to_ignore = {},
+      },
+
       post_restore_cmds = {
         function()
           vim.cmd "silent! bufdo e"
