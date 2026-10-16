@@ -11,6 +11,22 @@ end
 local o = vim.o
 o.cursorlineopt = "both" -- to enable cursorline!
 o.background = "dark"
+
+-- Auto-session needs these options to restore all buffers and their local
+-- state (filetype, syntax, folds, etc.) correctly.
+vim.opt.sessionoptions = {
+  "blank",
+  "buffers",
+  "curdir",
+  "folds",
+  "help",
+  "tabpages",
+  "winsize",
+  "winpos",
+  "terminal",
+  "localoptions",
+}
+
 vim.opt.relativenumber = true
 vim.opt.list = true
 vim.opt.listchars = {
