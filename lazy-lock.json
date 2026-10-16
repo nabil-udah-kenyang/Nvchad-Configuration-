@@ -2,7 +2,6 @@
   "LuaSnip": { "branch": "master", "commit": "0abc8f390b278c3b4aabc4c004ac8a088b65cf24" },
   "NvChad": { "branch": "v2.5", "commit": "add44b952d631981614bbb8cfc6f7002f296dfe6" },
   "auto-session": { "branch": "main", "commit": "02a5588f677970a9bc784115c62bef9e5855499b" },
-  "avante.nvim": { "branch": "main", "commit": "4f49656657d0e1b55a03c23510ccc1ef1eeaa9e9" },
   "base46": { "branch": "v3.0", "commit": "7df2bd89295db00b649cbc49bdf6fe5a1cc5df3b" },
   "cmake-tools.nvim": { "branch": "master", "commit": "ee807ac4e62591720de2f6ad0abbfb966c4c7b97" },
   "cmp-async-path": { "branch": "main", "commit": "98185a91d49ff5dd249aebf2f7456e18063fa2a0" },
