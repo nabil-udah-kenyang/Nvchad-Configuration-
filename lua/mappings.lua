@@ -52,10 +52,6 @@ map("n", "<leader>flt", "<cmd>FlutterLogToggle<CR>", { desc = "Flutter log toggl
 vim.keymap.set("n", "<C-p>", ":FloatermToggle<CR>", { silent = true })
 vim.keymap.set("n", "<leader>mt", ":Markview toggle<CR>", { silent = true }, { desc = "markdown preview" })
 
-vim.keymap.set("n", "<C-l>", function()
-  require("triforce").show_profile()
-end, { desc = "tampilkan triforce statsnya" })
-
 vim.keymap.set({ "n", "v" }, "<RightMouse>", function()
   require("menu.utils").delete_old_menus()
 

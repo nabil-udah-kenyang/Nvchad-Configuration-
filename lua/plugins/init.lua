@@ -168,16 +168,6 @@ return {
     -- end,
   },
 
-  {
-    "gisketch/triforce.nvim",
-    dependencies = {
-      "nvzone/volt",
-    },
-    config = function()
-      require "configs.triforce"
-    end,
-  },
-
   -- markdown preview
   {
     "OXY2DEV/markview.nvim",

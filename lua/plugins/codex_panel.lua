@@ -1,6 +1,7 @@
 return {
   {
     "nabil-udah-kenyang/codex-panel.nvim",
+    dependencies = { "stevearc/dressing.nvim" },
     cmd = { "CodexPanel" },
     keys = {
       { "<leader>co", "<cmd>CodexPanel<cr>", desc = "Codex: Open or toggle panel" },
