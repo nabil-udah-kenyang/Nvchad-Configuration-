@@ -92,6 +92,21 @@ vim.keymap.set("n", "<leader>tl", "<cmd>Trouble loclist toggle<CR>", { desc = "L
 
 vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Select all text" })
 
+-- GitHub Copilot
+-- Ctrl+Alt+Right Arrow: terapkan seluruh suggestion
+vim.keymap.set("i", "<C-M-Right>", 'copilot#Accept("")', {
+  expr = true,
+  replace_keycodes = false,
+  silent = true,
+  desc = "Copilot: accept suggestion",
+})
+
+-- Ctrl+Alt+Space: terapkan satu kata dari suggestion
+vim.keymap.set("i", "<C-M-Space>", "<Plug>(copilot-accept-word)", {
+  silent = true,
+  desc = "Copilot: accept next word",
+})
+
 -- ===============================
 -- Buka Flutter Mobile Simulator
 -- ===============================
